@@ -1,0 +1,10 @@
+body {
+  width: 100%; }
+
+header {
+  background-image: url(Merged-bar-1.png);
+  display: flex; }
+
+.logo-sante {
+  width: 50%;
+  height: auto; }
