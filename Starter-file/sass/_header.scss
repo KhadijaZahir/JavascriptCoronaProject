@@ -1,0 +1,68 @@
+header {
+  background-image: url('/Design/Assets/png/Merged-bar-mat.png');
+  background-image: url('/Design/Assets/png/Merged-bar-transparent.png'); //../Design/Assets/png/Merged-bar-1@2x.png" 
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-color: $colorHeaderBar;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.logo-sante {
+  margin-top: 8px;
+  margin-left: 30px;
+  // width: auto;
+  // height: auto;
+}
+
+.navbar {
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+
+  &__item {
+      margin: 0 20px;
+      font-size: 1.5rem;
+
+      & a {
+          text-decoration: none;
+          color: $BlackTitle;
+
+          &:hover {
+              color: $BlueTitle;
+          }
+
+          &:active {
+              color: $BlueTitle;
+
+          }
+
+      }
+  }
+
+}
+
+.multilangBtn {
+  width: 140px;
+  height: 50px;
+  margin: 0 30px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border-radius: 16px;
+  border: 2px solid $BlueTitle;
+  display: flex;
+  align-self: center;
+
+  & .icon-multilang {
+      width: 40px;
+      height: 40px;
+      margin: 0 12px;
+  }
+}
+
+nav {
+  display: flex;
+}
