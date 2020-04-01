@@ -2,13 +2,17 @@
     background-color: $blueBg;
     padding: 20px;
     & h2 {
+        @include h2;
         color: #d0e5f0;
-        text-align: center;
+        // text-align: center;
     }
 }
 
 .Recomandation {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
     line-height: 1.5;
     font-weight: 600;
     font-size: 2rem;
@@ -16,7 +20,12 @@
     &__text {
         margin: 0 88px;
         text-align: left;
-        width: 60%;
+//     @media screen and (max-width: 1280px){
+//         text-align: center;
+//         align-self: center;
+//         margin: auto;
+//   }
+        // width: 60%;
         color: #fff;
 
         & span {
@@ -26,15 +35,18 @@
 
     &__Contact {
         color: $yellow;
-        font-size: 2rem;
+        font-size: 2.2rem;
+        font-weight: 700;
         display: flex;
+        flex-wrap: nowrap;
         flex-direction: column;
-        // align-self: center;
+        align-items: center;
         // justify-content: space-around;
 
         & button {
             color: $blueBg;
             font-size: 2rem;
+            border: 1px solid $yellow;
             background-color: $yellow;
             width: 250px;
             height: 70px;
@@ -44,6 +56,9 @@
             text-decoration: underline $yellow;
             margin-top: 20px;
         }
+        // & p{
+        //     margin-left: 11px;
+        // }
 
     }
 }

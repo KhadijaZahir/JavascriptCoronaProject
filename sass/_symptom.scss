@@ -1,0 +1,52 @@
+.symptomSection3 {
+    text-align: center;
+
+    & h2 {
+        color: $blueBg;
+        margin-bottom: 60px;
+        @include h2;
+    }
+}
+
+.symptom {
+    display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    justify-content: space-around;
+    // align-items: center;
+    // margin: 2px 20%;
+    
+    &__item {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        // width: 189px;
+        & p {
+            text-align: center;
+            // margin: 2px 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        & img{
+            align-self:center;
+        }
+        // &--face{
+        //      z-index: -1;
+        // }
+        &--goutlette{
+            position: absolute;
+            top: 63px;
+            // z-index: 1;
+        }
+        &--parablue{
+            color: $BlueTitle;
+            // margin: 0px 30px;
+
+            // & p {
+            //     text-align: center;
+            // }
+        }
+    }
+}

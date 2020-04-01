@@ -5,10 +5,10 @@ body {
 
 /*________________________________start section header______________________________________________*/
 header {
-  background-image: url("/Design/Assets/png/Merged-bar-mat.png");
-  background-image: url("/Design/Assets/png/Merged-bar-transparent.png");
+  background-image: url("/Assets/png/Merged-bar-transparent.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #bfdbea;
   display: flex;
   justify-content: space-between; }
 
@@ -24,20 +24,20 @@ header {
   list-style-type: none; }
   .navbar__item {
     margin: 0 20px;
-    font-size: 1.5rem; }
+    font-weight: 700;
+    font-size: 2rem; }
     .navbar__item a {
       text-decoration: none;
-      color: #2b2b2c; }
+      color: #000; }
       .navbar__item a:hover {
-        color: #6598df; }
-      .navbar__item a:active {
-        color: #6598df; }
+        color: #1078ad; }
 
 .multilangBtn {
   width: 140px;
   height: 50px;
   margin: 0 30px;
   font-size: 1.5rem;
+  font-weight: 700;
   background-color: transparent;
   border-radius: 16px;
   border: 2px solid #6598df;
@@ -64,35 +64,42 @@ nav {
     margin: 0;
     color: #000; }
   .yellowsection1 p {
+    font-size: 1.2rem;
+    font-weight: 700;
     color: #1078ad; }
 
 /*________________________________end yellow section______________________________________________*/
 /*___________________________________start testsection2________________________________________________*/
 .testSection2 {
-  margin-right: 30px;
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center; }
   .testSection2__img {
-    width: 50%; }
-    .testSection2__img img {
-      width: 100%;
-      margin-top: 40px; }
+    margin-top: 40px;
+    align-self: center; }
   .testSection2__text {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
     line-height: 1.5;
     margin-top: 40px;
     font-weight: 600;
     font-size: 1.6rem;
-    width: 50%;
     color: #7f7f7f;
     align-self: center;
     text-align: center; }
     .testSection2__text--title {
-      color: #6598df;
-      font-size: 2.2rem; }
+      text-align: center;
+      font-size: 2rem;
+      color: #1078ad;
+      margin-bottom: 60px; }
     .testSection2__text--img {
       width: 70px;
       height: 70px; }
     .testSection2__text--btnBlue {
-      width: 700px;
+      width: 90%;
       height: 60px;
       background-color: #1078ad;
       border: 1px solid #1078ad;
@@ -107,18 +114,34 @@ nav {
   text-align: center; }
   .symptomSection3 h2 {
     color: #1078ad;
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 2rem;
+    color: #1078ad;
     margin-bottom: 60px; }
 
 .symptom {
   display: flex;
-  justify-content: space-around;
-  margin: 2px 20%; }
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around; }
   .symptom__item {
-    width: 189px; }
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center; }
     .symptom__item p {
-      margin: 2px 0;
-      font-size: 2rem;
+      text-align: center;
+      font-size: 1.4rem;
       font-weight: 600; }
+    .symptom__item img {
+      align-self: center; }
+    .symptom__item--goutlette {
+      position: absolute;
+      top: 63px; }
+    .symptom__item--parablue {
+      color: #6598df; }
 
 /*___________________________________end Symptomsection________________________________________________*/
 /*___________________________________start recommendation section________________________________________________*/
@@ -126,29 +149,38 @@ nav {
   background-color: #1078ad;
   padding: 20px; }
   .RecomandatSect4 h2 {
-    color: #d0e5f0;
-    text-align: center; }
+    text-align: center;
+    font-size: 2rem;
+    color: #1078ad;
+    margin-bottom: 60px;
+    color: #d0e5f0; }
 
 .Recomandation {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
   line-height: 1.5;
   font-weight: 600;
   font-size: 2rem; }
   .Recomandation__text {
     margin: 0 88px;
     text-align: left;
-    width: 60%;
     color: #fff; }
     .Recomandation__text span {
       color: #000; }
   .Recomandation__Contact {
     color: #f4cf1b;
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
     display: flex;
-    flex-direction: column; }
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center; }
     .Recomandation__Contact button {
       color: #1078ad;
       font-size: 2rem;
+      border: 1px solid #f4cf1b;
       background-color: #f4cf1b;
       width: 250px;
       height: 70px; }
@@ -159,6 +191,75 @@ nav {
 
 /*___________________________________end recommendation section________________________________________________*/
 /*___________________________________start demarerTest section________________________________________________*/
+.demarerTest {
+  background-color: #bfdbea;
+  padding: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center; }
+  .demarerTest__title {
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    color: #1078ad;
+    margin-bottom: 60px; }
+  .demarerTest__btnBlue {
+    margin-top: 20px;
+    width: 80%;
+    height: 60px;
+    background-color: #1078ad;
+    border: 1px solid #1078ad;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.6rem; }
+
 /*___________________________________end demarerTest section________________________________________________*/
 /*___________________________________start footer section________________________________________________*/
+footer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center; }
+
+.logo-footer {
+  margin: 30px 0; }
+
+.ContactFooter {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around; }
+  .ContactFooter__menu {
+    display: flex;
+    flex-flow: nowrap column-reverse;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none; }
+  .ContactFooter__contact {
+    font-weight: 600;
+    text-align: center; }
+    .ContactFooter__contact--blue {
+      color: #1078ad;
+      font-size: 2rem; }
+    .ContactFooter__contact--black {
+      color: #2b2b2c;
+      font-size: 1.2rem; }
+    .ContactFooter__contact--green {
+      color: #43a45e;
+      font-size: 2rem; }
+  .ContactFooter__algo {
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    color: #7f7f7f;
+    padding: 20px; }
+
+.rectanglDown {
+  background-color: #1078ad;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px 10px 0 0; }
+
 /*___________________________________end footer section________________________________________________*/

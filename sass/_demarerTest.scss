@@ -1,0 +1,27 @@
+.demarerTest {
+    background-color: $colorHeaderBar;
+    padding: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+     // align-self: center;
+        // text-align: center;
+
+    &__title {
+        align-items: center;
+        @include h2;
+    }
+
+    &__btnBlue {
+        margin-top: 20px;
+        width: 80%;
+        height: 60px;
+        background-color: $blueBg;
+        border: 1px solid $blueBg;
+        border-radius: 3px;
+        color: #fff;
+        font-weight: 500;
+        font-size: 2.6rem;
+    }
+}

@@ -1,9 +1,9 @@
 header {
-  background-image: url('/Design/Assets/png/Merged-bar-mat.png');
-  background-image: url('/Design/Assets/png/Merged-bar-transparent.png'); //../Design/Assets/png/Merged-bar-1@2x.png" 
+  // background-image: url('/Assets/png/Merged-bar-mat.png');
+  background-image: url('/Assets/png/Merged-bar-transparent.png'); 
   background-repeat: no-repeat;
   background-size: cover;
-  // background-color: $colorHeaderBar;
+  background-color: $colorHeaderBar;
   display: flex;
   justify-content: space-between;
 
@@ -25,21 +25,15 @@ header {
 
   &__item {
       margin: 0 20px;
-      font-size: 1.5rem;
+      font-weight: 700;
+      font-size: 2rem;
 
       & a {
           text-decoration: none;
-          color: $BlackTitle;
-
+          color: $Black;
           &:hover {
-              color: $BlueTitle;
+            color: $blueBg;
           }
-
-          &:active {
-              color: $BlueTitle;
-
-          }
-
       }
   }
 
@@ -50,6 +44,7 @@ header {
   height: 50px;
   margin: 0 30px;
   font-size: 1.5rem;
+  font-weight: 700;
   background-color: transparent;
   border-radius: 16px;
   border: 2px solid $BlueTitle;

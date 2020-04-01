@@ -4,12 +4,19 @@ $BlueTitle:#6598df;
 $colorHeaderBar:#bfdbea;
 $yellow:#f4cf1b;
 $blueBg:#1078ad;
+$greyText:#7f7f7f;
 
 
 body {
     box-sizing: border-box;
     width: 100%;
     font-size: 24px;
+}
+@mixin h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: $blueBg;
+    margin-bottom: 60px;
 }
 /*________________________________start section header______________________________________________*/
 
@@ -22,48 +29,61 @@ body {
 /*________________________________end yellow section______________________________________________*/
 
 /*___________________________________start testsection2________________________________________________*/
-
-.testSection2 {
-    margin-right: 30px;
+@mixin btnBlue{
+    width: 90%;
+    height: 60px;
+    background-color: $blueBg;
+    border: 1px solid $blueBg;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.6rem;
+}
+@mixin textDemarerTest {
     display: flex;
-
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.5;
+    margin-top: 40px;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.testSection2 {
+    // margin-right: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    // flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    // @media screen and (max-width: 768px) {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     flex-direction: column;
+    // }
     &__img {
-        width: 50%;
-
-        & img {
-            width: 100%;
+        // // width: 50%;
+        // @media screen and (max-width: 768px) {
+        //     width: auto
+        // }
+        // & img {
+        //     width: 100%;
             margin-top: 40px;
+            align-self: center;
         }
-    }
-    @mixin btnBlue{
-            width: 700px;
-            height: 60px;
-            background-color: $blueBg;
-            border: 1px solid $blueBg;
-            border-radius: 3px;
-            color: #fff;
-            font-weight: 500;
-            font-size: 2.6rem;
-    }
-
-    @mixin textDemarerText {
-        // display: flex;
-        // flex-direction: column;
-        line-height: 1.5;
-        margin-top: 40px;
-        font-weight: 600;
-        font-size: 1.6rem;
-    }
+    
     &__text {
-       @include textDemarerText;
-        width: 50%;
-        color: #7f7f7f;
+       @include textDemarerTest;
+        // @media screen and (max-width: 768px) {
+        //     width: auto
+        // }
+        color: $greyText;
         align-self: center;
         text-align: center;
 
         &--title {
-            color: $BlueTitle;
-            font-size: 2.2rem;
+            // width: 50%;
+            @include h2;
         }
         &--img{
             width: 70px;
@@ -95,4 +115,6 @@ body {
 
 /*___________________________________start footer section________________________________________________*/
 @import "footer";
+
+
 /*___________________________________end footer section________________________________________________*/
