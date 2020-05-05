@@ -1,0 +1,105 @@
+/*________________________________start section header______________________________________________*/
+
+@import "header";
+
+/*________________________________end section header______________________________________________*/
+/*________________________________start yellow section______________________________________________*/
+
+@import "yellowsection";
+/*________________________________end yellow section______________________________________________*/
+
+/*___________________________________start testsection2_________________________________________*/
+
+.testSection2 {
+    // margin-right: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    // flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    // @media screen and (max-width: 768px) {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     flex-direction: column;
+    // }
+    &__img {
+        width: 50%;
+        @media screen and (max-width: 900px) {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            margin-top: 40px;
+            align-self: center;
+        }
+    }  
+    &__text {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.5;
+        margin-right: 25px;
+        margin-top: 40px;
+        font-weight: 600;
+        font-size: 1rem;        // @media screen and (max-width: 768px) {
+        //     width: auto
+        // }
+        color: $greyText;
+        align-self: center;
+        text-align: center;
+
+        &--title {
+            // width: 50%;
+            @include h2;
+            font-size: 1.2rem;
+        }
+        &--img{
+            width: 70px;
+            height: 70px;
+        }
+        &--btnBlue {
+            margin-top: 20px;
+            width: 90%;
+            height: 60px;
+            color: white;
+            background-color: $blueBg;
+            border: 1px solid $blueBg;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 2.6rem;
+            &:hover{
+                border: 1px solid #96C5DC;
+                background-color: #96C5DC;
+            }
+            & a{
+               color: white;
+               text-decoration: none; 
+            }
+        }
+    }   
+}
+/*___________________________________end testsection2________________________________________________*/
+
+
+/*___________________________________start Symptomsection________________________________________________*/
+@import "symptom";
+/*___________________________________end Symptomsection________________________________________________*/
+
+
+/*___________________________________start recommendation section________________________________________________*/
+@import "recommendation";
+/*___________________________________end recommendation section________________________________________________*/
+
+
+/*___________________________________start demarerTest section________________________________________________*/
+@import "demarerTest";
+
+/*___________________________________end demarerTest section________________________________________________*/
+
+
+/*___________________________________start footer section________________________________________________*/
+@import "footer";
+
+
+/*___________________________________end footer section________________________________________________*/

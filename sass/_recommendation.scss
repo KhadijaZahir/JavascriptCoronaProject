@@ -1,0 +1,63 @@
+.RecomandatSect4 {
+    background-color: $blueBg;
+    padding: 20px;
+    & h2 {
+        @include h2;
+        color: #d0e5f0;
+    }
+}
+
+.Recomandation {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    line-height: 1.7;
+    font-weight: 600;
+    font-size: 1.4rem;
+
+    &__text {
+        margin: 0 30px;
+        text-align: left;
+//     @media screen and (max-width: 1280px){
+//         text-align: center;
+//         align-self: center;
+//         margin: auto;
+//   }
+        // width: 60%;
+        color: #fff;
+
+        & span {
+            color: $Black;
+        }
+    }
+
+    &__Contact {
+        color: $yellow;
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        // justify-content: space-around;
+        
+        & button {
+            color: $blueBg;
+            font-size: 1.5rem;
+            border: 1px solid $yellow;
+            background-color: $yellow;
+            width: 220px;
+            height: 65px;
+        }
+        & a{
+            color: #fff;
+            text-decoration: underline $yellow;
+            margin-top: 20px;
+        }
+        // & p{
+        //     margin-left: 11px;
+        // }
+
+    }
+}
