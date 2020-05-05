@@ -1,23 +1,3 @@
-$BlackTitle: #2b2b2c;
-$Black:#000;
-$BlueTitle:#6598df;
-$colorHeaderBar:#bfdbea;
-$yellow:#f4cf1b;
-$blueBg:#1078ad;
-$greyText:#7f7f7f;
-
-
-body {
-    box-sizing: border-box;
-    width: 100%;
-    font-size: 24px;
-}
-@mixin h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: $blueBg;
-    margin-bottom: 60px;
-}
 /*________________________________start section header______________________________________________*/
 
 @import "header";
@@ -28,27 +8,8 @@ body {
 @import "yellowsection";
 /*________________________________end yellow section______________________________________________*/
 
-/*___________________________________start testsection2________________________________________________*/
-@mixin btnBlue{
-    width: 90%;
-    height: 60px;
-    background-color: $blueBg;
-    border: 1px solid $blueBg;
-    border-radius: 3px;
-    color: #fff;
-    font-weight: 500;
-    font-size: 2.6rem;
-}
-@mixin textDemarerTest {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.5;
-    margin-top: 40px;
-    font-weight: 600;
-    font-size: 1.6rem;
-}
+/*___________________________________start testsection2_________________________________________*/
+
 .testSection2 {
     // margin-right: 30px;
     display: flex;
@@ -62,19 +23,26 @@ body {
     //     flex-direction: column;
     // }
     &__img {
-        // // width: 50%;
-        // @media screen and (max-width: 768px) {
-        //     width: auto
-        // }
-        // & img {
-        //     width: 100%;
+        width: 50%;
+        @media screen and (max-width: 900px) {
+            width: 100%;
+        }
+        img {
+            width: 100%;
             margin-top: 40px;
             align-self: center;
         }
-    
+    }  
     &__text {
-       @include textDemarerTest;
-        // @media screen and (max-width: 768px) {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.5;
+        margin-right: 25px;
+        margin-top: 40px;
+        font-weight: 600;
+        font-size: 1rem;        // @media screen and (max-width: 768px) {
         //     width: auto
         // }
         color: $greyText;
@@ -84,13 +52,30 @@ body {
         &--title {
             // width: 50%;
             @include h2;
+            font-size: 1.2rem;
         }
         &--img{
             width: 70px;
             height: 70px;
         }
         &--btnBlue {
-          @include btnBlue;
+            margin-top: 20px;
+            width: 90%;
+            height: 60px;
+            color: white;
+            background-color: $blueBg;
+            border: 1px solid $blueBg;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 2.6rem;
+            &:hover{
+                border: 1px solid #96C5DC;
+                background-color: #96C5DC;
+            }
+            & a{
+               color: white;
+               text-decoration: none; 
+            }
         }
     }   
 }

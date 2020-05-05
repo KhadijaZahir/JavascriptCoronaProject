@@ -15,13 +15,21 @@
 
     &__btnBlue {
         margin-top: 20px;
-        width: 80%;
+        width: 90%;
         height: 60px;
+        color: white;
         background-color: $blueBg;
         border: 1px solid $blueBg;
         border-radius: 3px;
-        color: #fff;
         font-weight: 500;
         font-size: 2.6rem;
+        &:hover{
+            border: 1px solid #96C5DC;
+            background-color: #96C5DC;
+        }
+        & a{
+           color: white;
+           text-decoration: none; 
+        }
     }
 }

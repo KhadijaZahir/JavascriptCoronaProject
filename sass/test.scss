@@ -1,0 +1,290 @@
+/* $BlackTitle: #2b2b2c;
+$Black:#000;
+$BlueTitle:#6598df;
+$colorHeaderBar:#bfdbea;
+$yellow:#f4cf1b;
+$blueBg:#1078AD;
+$greyText:#7f7f7f;
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+}
+
+@mixin h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: $blueBg;
+    margin-bottom: 40px;
+}
+ */
+@import "header";
+@import "recommendation";
+@import "footer";
+
+/*_____________________________________test page__________________________________________________________*/
+.preambulSection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .PreambulSec {
+
+        width: 70%;
+        text-align: center;
+        background-color: #96C5DC;
+        padding: 7px 33px;
+        border-radius: 5px;
+        margin-top: 30px;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bolder;
+            color: $blueBg;
+        }
+
+        hr {
+            width: 50%;
+            margin: auto;
+            border: 1px solid $yellow;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 30px 0;
+        }
+
+    }
+
+    .btnTestBlue {
+
+        font-size: 2rem;
+        font-weight: bolder;
+        color: white;
+        background-color: #1078AD;
+        padding: 10px 30px 10px;
+        border: 3px solid #1078AD;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 30px 0;
+
+        &:hover {
+            border: 3px solid $colorHeaderBar;
+            background-color: $colorHeaderBar;
+        }
+    }
+}
+
+/*_________________________________stepper_____________*/
+
+.stepper {
+    padding: 55px 15% 10px;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+
+    h1 {
+        font-size: 1.6rem;
+        color: #1078AD;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::before {
+            content: '';
+            height: 22px;
+            width: 22px;
+            background-color: #1078AD;
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+        }
+
+    }
+
+    .selected {
+        &::before {
+            content: '';
+            height: 22px;
+            width: 22px;
+            background-color: #F4CF1B;
+            border-radius: 50%;
+            position: absolute;
+            top: -30px;
+            z-index: 100;
+
+        }
+
+        &::after {
+            content: '';
+            height: 48px;
+            width: 48px;
+            background-color: #88b7d3;
+            border-radius: 50%;
+            position: absolute;
+            top: -43px;
+            z-index: 50;
+
+
+        }
+    }
+}
+
+.questionnaire {
+    width: 70%;
+    margin: 20px auto;
+    display: none;
+    h1 {
+        text-align: center;
+        font-size: 1.9rem;
+        color: #787878;
+        font-weight: bolder;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .progress {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        h3 {
+            font-weight: bolder;
+            margin-left: 15px;
+        }
+
+        &__bar {
+            width: 60%;
+            height: 15px;
+            border-radius: 20px;
+            background-color: #e6f1f7;
+            .bar {
+                height: 100%;
+                width: calc(1 * calc(100% / 22));
+                background-color: $blueBg;
+                border-radius: 20px 0 0 20px;
+            }
+        }
+    }
+
+}
+
+.answerShow {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    & div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+        input[type="number"] {
+            font-size: 16px;
+            border: 1px solid $blueBg;
+            width: 70%;
+            padding: 10px;
+        }
+    
+        .input-span {
+            font-size: 26px;
+            color: $blueBg;
+        }
+    
+        label {
+                color: #787878;
+            font-size: 17px;
+        }
+        
+ ////test custom input radio
+
+            input[type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.side-label {
+  display: block;
+  position: relative;
+  margin: 10px 0;
+  padding-left: 35px;
+  cursor: pointer;
+}
+
+.side-label::before, .side-label::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+input[type="radio"] + .side-label::before,
+input[type="radio"] + .side-label::after {
+  border-radius: 50%;
+}
+
+.side-label::before {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 4px solid $blueBg;  
+}
+
+.side-label::after {
+  display: none;
+  width: 12px;
+  height: 12px;
+  margin: 8px;
+  background-color: $yellow;
+}
+
+input:checked + .side-label::after {
+  display: block;
+}
+ ////test custom input radio
+
+}
+
+.btnNextPrevious{
+    margin-top: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    button {
+        background-color: #1078AD;
+        padding: 10px 20px;
+        color: #fff;
+        border: 2px solid $blueBg;
+        border-radius: 4px;
+        font-size: 22px;
+        font-weight: bolder;
+        cursor: pointer;
+
+        &:hover {
+            border: 3px solid $colorHeaderBar;
+            background-color: $colorHeaderBar;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+}
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+

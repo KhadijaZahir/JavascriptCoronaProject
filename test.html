@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+     -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/coat-of-arms-of-morocco-logo.png" />
+    <!-- <link rel="stylesheet" href="css/test.css" /> -->
+
+</head>
+
+<body>
+
+    <!-------------------------------------------- start navbar -------------------------------------->
+    <header>
+        <div>
+            <img class="logo-sante" src="img/logo__sante.png" alt="logo-ministère de la santé">
+        </div>
+        <nav>
+            <ul class="navbar">
+              <li class="navbar__item"><a href="conseils.html">Conseil</a></li>
+              <li class="navbar__item"><a href="index.html">Accueil</a></li>
+            </ul>
+            <button class="multilangBtn">عربي <img class="icon-multilang" src="img/icons8-geography-48.png" alt="icon geography for multilang"></button>  
+        </nav>
+    
+      </header>
+
+    <!---------------------------------------- end navbar ------------------------------------------->
+
+
+     <!---------------------------------------- stepper navbar ------------------------------------------->
+     <section class="stepper">
+        <!-- <hr> -->
+        <h1 class="selected">Informations</h1>
+        <h1>Questionnaire</h1>
+        <h1>Résultats</h1>
+</section>
+
+<!---------------------------------------- stepper navbar ------------------------------------------->
+
+
+<!------------------------------------- start Préambule section  ------------------------>
+<section class="preambulSection">
+    <div class="resultTitle"></div>
+    <div class="PreambulSec">
+        <h1>Préambule</h1>
+
+        <p>L’application est fournie à titre gratuit, en l’état, uniquement à des fins d’information pour contribuer à
+            fluidifier la prise en charge des personnes par les services d’urgences pendant l’épidémie de Coronavirus
+            COVID-19. L’exhaustivité, l’exactitude, le caractère à jour des informations et contenus mis à disposition
+            dans cette application, ou leur adéquation à des finalités particulières, ne sont pas garantis.</p>
+
+        <hr>
+        <p>Cette application ne substitue pas votre médecin qui est plus apte à vous donner plus de précision.
+            Les informations de cette application est le premier niveau de la détection des cas possibles du COVID-19.
+        </p>
+
+    </div>
+
+    <button class="btnTestBlue">Demarer le test</button>
+</section>
+<!------------------------------------- end  Préambule  section  ------------------------>
+
+<section class="questionnaire">
+
+    <div class="progress">
+        <h3><span class="progressQuestionNumber">1</span> /23</h3>
+        <div class="progress__bar">
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <div class="quizContainer">
+        <h1 class="questionShow"></h1>
+
+        <div class="answerShow">
+
+        </div>
+
+        <div class="btnNextPrevious">
+            <button class="previous">Question d'avant</button>
+            <button class="next ">Question suivante</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!------------------------------------- start Recommandations section  ------------------------>
+    <section class="RecomandatSect4">
+     
+        <h2>Recommandations officielles</h2>
+         <div class="Recomandation">
+            <div class="Recomandation__text">
+                <p>
+                  <span>Si vous pensez être malade,</span><br>
+                  évitez les endroits publics.<br>
+                  Ne rendez pas visite aux personnes fragiles.<br>
+                  Évitez de sortir de chez vous.<br>
+                  Respectez les mesures barrière (lavage de main, masque).<br>
+                  Surveillez vos symptômes, l’évolution de votre température<br>
+                  corporelle et recherchez un avis médical.
+                </p>
+              </div>
+              <div class="Recomandation__Contact">
+                  <p>Apple Gratuit</p>
+                  <button>080 100 47 47</button>
+                  <a href="www.sante.gov.ma">www.sante.gov.ma</a> 
+              </div>
+         </div>    
+    </section>
+
+    <!------------------------------------- end Recommandations section  ------------------------>
+
+
+
+
+
+    <!-------------------------------------- start footer ------------------------------------>
+
+    <footer>
+
+        <div>
+            <img class="logo-footer" src="img/logo__sante.png" alt="logo-ministère de la santé">
+        </div>
+    
+        <div class="ContactFooter">
+    
+            <div class="ContactFooter__menu">
+                <!-- <ul class="navbar"> -->
+                    <li class="navbar__item"><a href="index.html">Conseil</a></li>
+                    <li class="navbar__item"><a href="Acc.html">Accueil</a></li>
+                <!-- </ul> -->
+                <button class="multilangBtn">FRAN <img class="icon-multilang" src="img/icons8-geography-48.png" alt="icon geography for multilang"></button>  
+            </div>
+    
+            <div class="ContactFooter__contact">
+                 <div class="ContactFooter__contact--blue">Contacts utiles</div> 
+                 <p class="ContactFooter__contact--black">Chiffre économique "Alo épidémie vigilance"</p> 
+                <div class="ContactFooter__contact--green">080 100 47 47</div>
+                <p class="ContactFooter__contact--black">Aide médicale urgente</p>
+                <div class="ContactFooter__contact--green">114</div>
+                
+            </div>
+    
+            <div class="ContactFooter__algo">
+                Algorithme d'orientation mis à jour sur les recommandations en vigueur <br>
+                au 22/03/2020 à 16h15. Ce site d’information n’est pas un dispositif médical, <br>
+                il ne délivre pas d’avis médical. Projet solidaire d'urgence,financé par l’Alliance <br>
+                Digitale contre le COVID-19 : @maladiecovid19
+            </div>
+    
+        </div>
+        <div class="rectanglDown"></div>
+    </footer>
+
+    <!-------------------------------------- end footer ------------------------------------>
+
+
+
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

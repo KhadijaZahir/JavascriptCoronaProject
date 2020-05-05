@@ -1,5 +1,5 @@
 {
-  "name": "JavascriptCoronaProject",
+  "name": "javascriptcoronaproject",
   "version": "1.0.0",
   "description": "C'est un projet pour valider les compétences C3N3 (C2N3).",
   "main": "index.js",
@@ -12,15 +12,14 @@
   "scripts": {
     "watch1-sass": "node-sass sass/main.scss css/main.css --watch",
     "watch2-sass": "node-sass sass/conseil.scss css/conseil.css --watch",
-    "compile2-sass": "node-sass sass/conseil.scss css/conseil.css",
-    "compile1-sass": "node-sass sass/main.scss css/main.css",
-  "concat-css": "concat -o css/style.css css/conseil.css css/main.css",
-  "prefix-css": "postcss --use autoprefixer -b 'last 5 versions' css/style.concat.css -o css/style.prefix.css",
-  "compress-css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
-  "build1-css": "npm-run-all compile1-sass concat-css prefix-css compress-css",
-  "build2-css": "npm-run-all compile2-sass concat-css prefix-css compress-css"
-
-
+    "watch3-sass": "node-sass sass/test.scss css/test.css --watch",
+    "watch4-sass": "node-sass sass/error.scss css/error.css --watch",
+    "watch5-sass": "node-sass sass/allSassFiles.scss css/style.css --watch",
+    "concat-css": "concat -o css/style.css css/conseil.css css/test.css css/main.css",
+    "prefix-css": "postcss --use autoprefixer -b 'last 5 versions' css/style.concat.css -o css/style.prefix.css",
+    "compress-css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build1-css": "npm-run-all compile1-sass concat-css prefix-css compress-css",
+    "build2-css": "npm-run-all compile2-sass concat-css prefix-css compress-css"
   },
   "repository": {
     "type": "git",
