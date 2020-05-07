@@ -6,6 +6,7 @@ body {
   font-size: 14px; }
 
 header {
+  width: 100%;
   background-image: url("../img/bar_transparent.png");
   background-size: cover;
   display: flex;
@@ -114,6 +115,7 @@ nav {
 } */
 /*________________________________start section header______________________________________________*/
 header {
+  width: 100%;
   background-image: url("../img/bar_transparent.png");
   background-size: cover;
   display: flex;
@@ -464,6 +466,7 @@ section h2 {
 
 /*________________________________start section header______________________________________________*/
 header {
+  width: 100%;
   background-image: url("../img/bar_transparent.png");
   background-size: cover;
   display: flex;
@@ -808,31 +811,8 @@ footer {
   border-radius: 10px 10px 0 0; }
 
 /*___________________________________end footer section________________________________________________*/
-/* $BlackTitle: #2b2b2c;
-$Black:#000;
-$BlueTitle:#6598df;
-$colorHeaderBar:#bfdbea;
-$yellow:#f4cf1b;
-$blueBg:#1078AD;
-$greyText:#7f7f7f;
-
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
-
-body {
-    box-sizing: border-box;
-    width: 100%;
-    font-family: 'Cairo', sans-serif;
-    font-size: 14px;
-}
-
-@mixin h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: $blueBg;
-    margin-bottom: 40px;
-}
- */
 header {
+  width: 100%;
   background-image: url("../img/bar_transparent.png");
   background-size: cover;
   display: flex;
@@ -1032,6 +1012,47 @@ footer {
   border-radius: 10px 10px 0 0; }
 
 /*_____________________________________test page__________________________________________________________*/
+/*_________________________________stepper_____________*/
+.stepper {
+  padding: 55px 15% 10px;
+  display: flex;
+  justify-content: space-around; }
+  .stepper h1 {
+    font-size: 1.4rem;
+    color: #1078AD;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .stepper h1::before {
+      content: '';
+      height: 22px;
+      width: 22px;
+      background-color: #1078AD;
+      border-radius: 50%;
+      position: absolute;
+      top: -40px; }
+  .stepper .selected::before {
+    content: '';
+    height: 22px;
+    width: 22px;
+    background-color: #F4CF1B;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    z-index: 100; }
+  .stepper .selected::after {
+    content: '';
+    height: 48px;
+    width: 48px;
+    background-color: #88b7d3;
+    border-radius: 50%;
+    position: absolute;
+    top: -52px;
+    z-index: 50; }
+
+/*________________________________________end stepper_____________________________________________________*/
+/*________________________________________Start preambul sec_____________________________________________________*/
 .preambulSection {
   display: flex;
   flex-direction: column;
@@ -1069,57 +1090,12 @@ footer {
       border: 3px solid #bfdbea;
       background-color: #bfdbea; }
 
-/*_________________________________stepper_____________*/
-.stepper {
-  padding: 55px 15% 10px;
-  display: flex;
-  text-align: center;
-  justify-content: space-evenly; }
-  .stepper h1 {
-    font-size: 1.6rem;
-    color: #1078AD;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .stepper h1::before {
-      content: '';
-      height: 22px;
-      width: 22px;
-      background-color: #1078AD;
-      border-radius: 50%;
-      position: absolute;
-      top: -25px; }
-  .stepper .selected::before {
-    content: '';
-    height: 22px;
-    width: 22px;
-    background-color: #F4CF1B;
-    border-radius: 50%;
-    position: absolute;
-    top: -30px;
-    z-index: 100; }
-  .stepper .selected::after {
-    content: '';
-    height: 48px;
-    width: 48px;
-    background-color: #88b7d3;
-    border-radius: 50%;
-    position: absolute;
-    top: -43px;
-    z-index: 50; }
-
+/*________________________________________end preambul sec_____________________________________________________*/
+/*________________________________________Start quiz sec_____________________________________________________*/
 .questionnaire {
   width: 70%;
   margin: 20px auto;
   display: none; }
-  .questionnaire h1 {
-    text-align: center;
-    font-size: 1.9rem;
-    color: #787878;
-    font-weight: bolder;
-    width: 80%;
-    margin: 20px auto; }
   .questionnaire .progress {
     display: flex;
     flex-direction: row-reverse;
@@ -1127,7 +1103,7 @@ footer {
     align-items: center; }
     .questionnaire .progress h3 {
       font-weight: bolder;
-      margin-left: 15px; }
+      margin-left: 7px; }
     .questionnaire .progress__bar {
       width: 60%;
       height: 15px;
@@ -1139,35 +1115,45 @@ footer {
         background-color: #1078AD;
         border-radius: 20px 0 0 20px; }
 
+.questionShow {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #787878;
+  font-weight: bolder;
+  width: 80%;
+  margin: 20px auto; }
+
 .answerShow {
   width: 80%;
   margin: 0 auto;
+  margin-top: 39px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center; }
-  .answerShow div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between; }
+  align-items: center;
+  /*  & div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+    } */ }
   .answerShow input[type="number"] {
     font-size: 16px;
     border: 1px solid #1078AD;
     width: 70%;
     padding: 10px; }
-  .answerShow .input-span {
-    font-size: 26px;
+  .answerShow .input-span-number {
+    font-size: 1.8rem;
     color: #1078AD; }
   .answerShow label {
     color: #787878;
     font-size: 17px; }
   .answerShow input[type="radio"] {
     position: absolute;
-    left: -9999px; }
+    left: -9px; }
   .answerShow .side-label {
-    display: block;
     position: relative;
     margin: 10px 0;
     padding-left: 35px;
@@ -1175,7 +1161,7 @@ footer {
   .answerShow .side-label::before, .answerShow .side-label::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: -5px;
     left: 0; }
   .answerShow input[type="radio"] + .side-label::before,
   .answerShow input[type="radio"] + .side-label::after {
@@ -1195,9 +1181,8 @@ footer {
     display: block; }
 
 .btnNextPrevious {
-  margin-top: 120px;
+  margin-top: 70px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center; }
   .btnNextPrevious button {
@@ -1218,3 +1203,5 @@ footer {
 .hide {
   opacity: 0;
   pointer-events: none; }
+
+/*________________________________________end quiz sec_____________________________________________________*/

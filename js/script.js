@@ -1,25 +1,26 @@
 //variables 
-const btnStartTest = document.querySelector('.btnTestBlue')
-const questionnaire = document.querySelector('.questionnaire')
+// var for stepper info resulats question 
+const stepper = document.querySelectorAll('.stepper h1')
+
+// var for show and hide para preambul or results
+const PreambulSec = document.querySelector('.PreambulSec')
+const preambulTitle = document.querySelector('.PreambulSec h1')
+const resultMessage = document.querySelectorAll('.PreambulSec p')
+const result = document.querySelector('.resultTitle')
+
 // var for progress bar
 const progressBar = document.querySelector('.bar')
 const progressQuestionNumber = document.querySelector('.progressQuestionNumber')
+
+// var start test
+const btnStartTest = document.querySelector('.btnTestBlue')
+const questionnaire = document.querySelector('.questionnaire')
 // var for show btn nest and previous
 const qstSwitch = document.querySelector('.quizContainer')
 const nextBtn = document.querySelector('.next')
 const previousBtn = document.querySelector('.previous')
 const currentquestion = document.querySelector('.questionShow')
 const answerInputs = document.querySelector('.answerShow')
-
-// var for show and hide para preambul or results
-const PreambulSec = document.querySelector('.PreambulSec')
-const result = document.querySelector('.resultTitle')
-const preambulTitle = document.querySelector('.PreambulSec h1')
-const resultMessage = document.querySelectorAll('.PreambulSec p')
-
-// var for stepper info resulats question 
-const stepper = document.querySelectorAll('.stepper h1')
-
 
 // event
 btnStartTest.addEventListener('click', function buildQuiz() {
@@ -33,24 +34,19 @@ btnStartTest.addEventListener('click', function buildQuiz() {
     loadQuestionList(questions[i]);
 });
 
-qstSwitch.addEventListener('change', (event) => {
-    const input = event.target
 
-    if (input.type === 'number') {
-        const number = parseFloat(input.value)
-        
-        if (number >= input.min && number <= input.max) {
-            answers[input.name] = input.value
-            nextBtn.disabled = false
-        } else {
-            nextBtn.disabled = true
-        }
-    } else {
-        answers[input.name] = input.id
-        nextBtn.disabled = false
-    }
-})
 
+//move progress bar and number of qst
+function activeBar(nb) {
+
+    const nbQuestion = nb + 1;
+
+    progressQuestionNumber.innerText = nbQuestion;
+    progressBar.style.width = `calc(${nbQuestion} * calc(100% / 23))`;
+
+}
+
+///hide btn previous at the first qst
 let i = 0
 
 function hidePreviousBtn() {
@@ -61,9 +57,6 @@ function hidePreviousBtn() {
         previousBtn.classList.remove('hide')
     }
 }
-
-
-
 
 
 nextBtn.addEventListener('click', () => {
@@ -92,54 +85,38 @@ previousBtn.addEventListener('click', () => {
     activeBar(i);
     hidePreviousBtn();
     nextBtn.disabled = true;
-    // if (i === (questions.length) - 1 ) {
-    //     nextBtn.innerText = 'Terminer le test';
+})
 
-    // }else {
-    //     nextBtn.innerText = 'Question suivante';
-    //     nextBtn.classList.remove('result');
-    // }
+qstSwitch.addEventListener('change', (event) => {
+    const input = event.target;
+
+    if (input.type === 'number') {
+        const number = parseFloat(input.value);
+        
+        if (number >= input.min && number <= input.max) {
+            answers[input.name]= input.value;
+            nextBtn.disabled = false;
+        } else {
+            nextBtn.disabled = true;
+        }
+    } else {
+        answers[input.name]= input.id;
+        nextBtn.disabled = false;
+    }
 })
 
 
-/* function loadNextQuestion(){
-    const input = question.input
-  if (input.type === 'number') {
-    const number = parseFloat(input.value)
-    if (number >= input.min && number <= input.max) {
-        nextBtn.disabled = false
-       }else if(number < input.min || number > input.max ){
-          alert(`valeur doit etre entre ${min} et ${max} `);
-          return;
-       }else {
-        alert('SVP choisir une valeur');
-        return; 
-    }
-  } else {
-    nextBtn.disabled = false
-  }
-}     loadNextQuestion(); */
-
 function loadQuestionList(qst) {
-    currentquestion.innerText = qst.question
-    answerInputs.innerHTML = ''
-    const inputAnswer = qst.input.answer
-    const input = qst.input
+    currentquestion.innerText = qst.question;
+    answerInputs.innerHTML = '';
+    const inputAnswer = qst.input.answer;
+    const input = qst.input;
 
     if(input.type === 'number'){
         
         answerInputs.innerHTML += `<input class="inputNumber" type="number" name="${input.qNumber}" id="${input.name}" min="${input.min}" max="${input.max}" placeholder="${input.min} - ${input.max}">
-                                    <span class="input-span">${input.name}</span>`                       
+                                    <span class="input-span-number">${input.name}</span>`                       
     
-            /* if(number < input.min || number > input.max ){
-                alert(`valeur doit etre entre ${min} et ${max} `);
-                return;
-            }else if (input.value == ''){
-                alert('SVP choisir une valeur');
-                return;
-            }else{ //(number >= input.min && number <= input.max) {
-                nextBtn.disabled = false
-            } */
 
     } else if (input.type === 'radio') {
 
@@ -149,100 +126,92 @@ function loadQuestionList(qst) {
                     <div>
                         <input type="radio" name="${input.qNumber}" id="${answer.text}">
                         <label for="${answer.text}" class="side-label">${answer.text}</label>
-                        </div>`
+                    </div>`
         })
 
     }
 }
 
 
-function activeBar(nb) {
 
-    const nbQuestion = nb + 1
 
-    progressQuestionNumber.innerText = nbQuestion
-    progressBar.style.width = `calc(${nbQuestion} * calc(100% / 23))`
+/// results algo
+let answers = {};
 
-}
-
-let answers = {}
-
-let facteurGMajor = 0
-let facteurGMineur = 0
+let facteurGMajor = 0;
+let facteurGMineur = 0;
 
 function Results() {
 
 
     if (answers['Q1'] === 'Oui' && answers['Q2'] >= 39){
 
-        facteurGMineur++
+        facteurGMineur++;
     }
     if (answers['Q1'] === 'Oui' && answers['Q2'] <= 35,4){
 
-        facteurGMajor++
+        facteurGMajor++;
     }
 
     if (answers['Q8'] === 'Oui') {
 
-        facteurGMineur++
+        facteurGMineur++;
     }
 
     if (answers['Q9'] === 'Oui' || answers['Q10'] === 'Oui') {
 
-        facteurGMajor++
+        facteurGMajor++;
     }
 
     if (answers['Q11'] === 'Mal' || answers['Q11'] === 'Très mal') {
-        facteurGMineur++
+        facteurGMineur++;
     }
     if (answers['Q12'] < 15) {
         nextBtn.disabled = true;
         nextBtn.innerText = 'Terminer le test';
     }
 
-    showResults(facteurGMajor, facteurGMineur)
+    showResults(facteurGMajor, facteurGMineur);
 }
 
 
 
 function showResults(facteurGMajor, facteurGMineur) {
     /// show third stepper
-    stepper[1].classList.remove('selected')
-    stepper[2].classList.add('selected')
+    stepper[1].classList.remove('selected');
+    stepper[2].classList.add('selected');
     ////show result
-    btnStartTest.style.display = 'block'
-    PreambulSec.style.display = 'block'
-    result.style.display = 'block'
-    questionnaire.style.display = 'none'
+    btnStartTest.style.display = 'block';
+    PreambulSec.style.display = 'block';
+    result.style.display = 'block';
+    questionnaire.style.display = 'none';
     /// refaire le test
-    btnStartTest.textContent = 'reprendre le test'
+    btnStartTest.textContent = 'reprendre le test';
     btnStartTest.addEventListener('click', () => {
-        window.location.reload()
+        window.location.reload();
     })
      ////////// style for result color size
-        preambulTitle.innerText = 'Résultats'
-        resultMessage[0].style.fontSize = '1.7rem'
-        resultMessage[0].style.fontWeight = 'bold'
-        resultMessage[0].style.color = '#FFFFFF'
-        resultMessage[1].style.color = '#F4CF1B'
-        result.style.color = '#ED0448'
-        preambulTitle.style.color = '#fff'
-        PreambulSec.style.bgcolor = '#1078AD'
-        result.style.fontSize = '1.8rem'
-        resultMessage[1].style.fontSize = '1.8rem'
-        resultMessage[1].innerText = "#RestezChezVous - limitez les contacts avec d'autres personnes. Le virus peut être propagé par des porteurs ne montrant pas de symptômes."        
+        preambulTitle.innerText = 'Résultats';
+        resultMessage[0].style.fontSize = '1.7rem';
+        resultMessage[0].style.fontWeight = 'bold';
+        resultMessage[0].style.color = '#FFFFFF';
+        resultMessage[1].style.color = '#F4CF1B';
+        result.style.color = '#ED0448';
+        preambulTitle.style.color = '#fff';
+        PreambulSec.style.bgcolor = '#1078AD';
+        result.style.fontSize = '1.8rem';
+        resultMessage[1].style.fontSize = '1.8rem';
+        resultMessage[1].innerText = "#RestezChezVous - limitez les contacts avec d'autres personnes. Le virus peut être propagé par des porteurs ne montrant pas de symptômes.";      
 
         //////algorithm ::: condition for showing result
 
     //age moins de 15
-    if (answers['Q12'] < 15) {
-        nextBtn.disabled = true
-        result.innerText ='STOP'
-        resultMessage[0].innerText ='Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.'
-    }
+                if (answers['Q12'] < 15) {
+                    nextBtn.disabled = true;
+                    result.innerText ='STOP';
+                    resultMessage[0].innerText ='Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.';
+                }
    //other age
-
-
 //    else if (answers['Q1'] === 'oui'|| answers['Q3'] === 'oui' || answers['Q5'] === 'oui'|| answers['Q4'] === 'oui' || answers['Q6'] === 'oui') {
 
                  else if (facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] < 50) {
@@ -271,47 +240,8 @@ function showResults(facteurGMajor, facteurGMineur) {
 // }
 }
 
-    /* else if (answers['Q1'] === 'oui'|| (answers['Q1'] === 'oui'&& answers['Q3'] === 'oui') ||( answers['Q3'] === 'oui' && answers['Q5'] === 'oui')|| (answers['Q3'] === 'oui' && (answers['Q4'] === 'oui' || answers['Q1'] === 'oui') && answers['Q6'] === 'oui')) {
 
-
-        resultMessage[1].innerText = "#RestezChezVous - limitez les contacts avec d'autres personnes. Le virus peut être propagé par des porteurs ne montrant pas de symptômes."        
-
-        if (facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] < 50) {
-                        result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-                        resultMessage[0].innerText = 'Consultez votre médecin au moindre doute.'
-                
-                    } else if ((facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] >= 50) || (facteurGMineur = 1)) {
-                        result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.'
-                        resultMessage[0].innerText = 'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.”'
-                
-                    } else if(facteurGMineur = 2) {
-                        result.innerText = 'Appelez 141'
-                        resultMessage[0].innerText = 'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.”'
-                
-                    } else if (facteurGMajor >= 2) {
-                        result.innerText = 'Appelez 141'
-                        resultMessage[0].innerText = 'Appelez 141 le plus vite possible'
-                
-                    } 
-    } else if (answers['Q1'] === 'oui'|| answers['Q3'] === 'oui' || answers['Q5'] === 'oui' || answers['Q4'] === 'oui') {
-            if (facteurGMineur === 0 && factuerGMajor === 0) {
-                result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-                resultMessage[0].innerText = 'Consultez votre médecin au moindre doute.'
-        
-            } else if (facteurGMineur === 1 || factuerGMajor ===1) {
-                result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-                resultMessage[0].innerText = 'Un avis médical est recommandé. Au moindre doute, appelez le 141.'
-    
-            }
-    } else {
-        result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-        resultMessage[0].innerText = 'N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19 allez vers la page d’accueil.'
-    }
-}
- */
-
-
-// results in array
+// results source
 const questions = [{
     question: 'Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?',
 
