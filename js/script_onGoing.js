@@ -30,7 +30,6 @@ btnStartTest.addEventListener('click', function buildQuiz() {
     PreambulSec.style.display = 'none';
     questionnaire.style.display = 'block';
     hidePreviousBtn();
-    nextBtn.disabled = true;
     loadQuestionList(questions[i]);
 });
 
@@ -65,7 +64,7 @@ nextBtn.addEventListener('click', () => {
         loadQuestionList(questions[i]);
         activeBar(i);
         hidePreviousBtn();
-        nextBtn.disabled = true;
+        nextBtn.disabled = true; //for answer each qst befor moving to another qst
         if (i === ((questions.length) - 1) || answers['Q12'] < 15) {
             nextBtn.innerText = 'Terminer le test';
             nextBtn.classList.add('result');
@@ -84,7 +83,6 @@ previousBtn.addEventListener('click', () => {
     loadQuestionList(questions[i]);
     activeBar(i);
     hidePreviousBtn();
-    nextBtn.disabled = true;
 })
 
 qstSwitch.addEventListener('change', (event) => {
@@ -114,7 +112,7 @@ function loadQuestionList(qst) {
 
     if(input.type === 'number'){
         
-        answerInputs.innerHTML += `<input class="inputNumber" type="number" name="${input.qNumber}" id="${input.name}" min="${input.min}" max="${input.max}" placeholder="${input.min} - ${input.max}">
+        answerInputs.innerHTML += `<input type="number" name="${input.qNumber}" id="${input.name}" min="${input.min}" max="${input.max}" placeholder="${input.min} - ${input.max}">
                                     <span class="input-span-number">${input.name}</span>`                       
     
 
@@ -140,35 +138,49 @@ let answers = {};
 
 let facteurGMajor = 0;
 let facteurGMineur = 0;
+let facteurGravite = 0;
+facteurGravite = facteurGMajor + facteurGMineur;
+let factorPronosticPositif = 0;
+let factorPronosticNegatif = 0;
 
 function Results() {
-
-
+          // facteurGMineur
+    if (answers['Q11'] === 'Mal' || answers['Q11'] === 'Très mal') {
+        facteurGMineur++;
+        facteurGravite++;
+    }
     if (answers['Q1'] === 'Oui' && answers['Q2'] >= 39){
 
         facteurGMineur++;
+        facteurGravite++;
     }
-    if (answers['Q1'] === 'Oui' && answers['Q2'] <= 35,4){
-
-        facteurGMajor++;
-    }
-
     if (answers['Q8'] === 'Oui') {
 
         facteurGMineur++;
+        facteurGravite++;
+    }
+     // facteurGMajor
+    if (answers['Q1'] === 'Oui' && answers['Q2'] <= 35,4){
+
+        facteurGMajor++;
+        facteurGravite++;
     }
 
     if (answers['Q9'] === 'Oui' || answers['Q10'] === 'Oui') {
 
         facteurGMajor++;
+        facteurGravite++;
     }
-
-    if (answers['Q11'] === 'Mal' || answers['Q11'] === 'Très mal') {
-        facteurGMineur++;
+     // factorPronostic
+    if (answers['Q12'] >= 70) {
+        factorPronosticPositif++;
     }
-    if (answers['Q12'] < 15) {
-        nextBtn.disabled = true;
-        nextBtn.innerText = 'Terminer le test';
+   
+    else if (answers['Q15'] === 'oui' || answers['Q15'] === 'Ne sait pas' || answers['Q16'] === 'oui' || answers['Q17'] === 'oui' || answers['Q18'] === 'oui' || answers['Q19'] === 'oui' || answers['Q20'] === 'oui' || answers['Q21'] === 'oui' || answers['Q22'] === 'oui' || answers['Q23'] === 'oui') {
+        factorPronosticPositif++; 
+    }
+    else{
+        factorPronosticNegatif++;
     }
 
     showResults(facteurGMajor, facteurGMineur);
@@ -176,7 +188,7 @@ function Results() {
 
 
 
-function showResults(facteurGMajor, facteurGMineur) {
+function showResults(facteurGMajor, facteurGMineur, factorPronosticPositif) {
     /// show third stepper
     stepper[1].classList.remove('selected');
     stepper[2].classList.add('selected');
@@ -211,33 +223,74 @@ function showResults(facteurGMajor, facteurGMineur) {
                     result.innerText ='STOP';
                     resultMessage[0].innerText ='Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.';
                 }
-   //other age
-//    else if (answers['Q1'] === 'oui'|| answers['Q3'] === 'oui' || answers['Q5'] === 'oui'|| answers['Q4'] === 'oui' || answers['Q6'] === 'oui') {
 
-                 else if (facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] < 50) {
-                    result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-                    resultMessage[0].innerText = 'Consultez votre médecin au moindre doute.'
+   //Patient avec fièvre, ou toux + mal de gorge, ou toux + courbatures ou fièvre + diarrhée
+   else if (answers['Q1'] === 'oui'|| (answers['Q3'] === 'oui' && answers['Q5'] === 'oui')|| (answers['Q3'] === 'oui' && answers['Q4'] === 'oui' )|| (answers['Q1'] === 'oui' && answers['Q6'] === 'oui')) {
+
+                    //Tout patient sans facteur pronostique
+                 if (factorPronosticPositif == 0 && facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] < 50) {
+                    result.innerText = 'nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes.'
+                    resultMessage[0].innerText = 'Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.'
             
-                } else if ((facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] >= 50) || (facteurGMineur = 1)) {
+                // } else if ((factorPronosticPositif == 0 && facteurGMineur === 0 && facteurGMajor === 0 && answers['Q3'] >= 50) || (facteurGMineur = 1)) {
+                  } else if(factorPronosticPositif === 0 && answers['Q3'] >= 50 && ((facteurGMineur === 0 && facteurGMajor === 0) || (facteurGMineur >= 1 && facteurGMajor === 0))) {
+
                     result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.'
                     resultMessage[0].innerText = 'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.”'
-            
-                } else if(facteurGMineur = 2) {
-                    result.innerText = 'Appelez 141'
-                    resultMessage[0].innerText = 'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.”'
-            
-                } else if (facteurGMajor >= 2) {
-                    result.innerText = 'Appelez 141'
-                    resultMessage[0].innerText = 'Appelez 141 le plus vite possible'
-            
-                }else {
-                    result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-                    resultMessage[0].innerText = 'N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19 allez vers la page d’accueil.'
                 }
-// } else {
-//     result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
-//     resultMessage[0].innerText = 'N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19 allez vers la page d’accueil.'
-// }
+                //Tout patient avec un facteur pronostique ou plus
+                else if (factorPronosticPositif >= 1 && facteurGMineur === 0 && facteurGMajor === 0) {
+                    result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.'
+                    resultMessage[0].innerText = 'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.”'
+
+                } 
+                else if (factorPronosticPositif >= 1 && facteurGMineur === 1 && facteurGMajor === 0) {
+                    result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.'
+                    resultMessage[0].innerText = 'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.”'
+
+                }
+                else if (factorPronosticPositif >= 1 && facteurGMineur === 0 && facteurGMajor === 0) {
+                    result.innerText = 'Appel 141'
+                }
+                //Tout patient avec ou sans facteur pronostique avec au moins un facteur de gravité majeur
+                else if (factorPronosticPositif >=0 && facteurGMajor > 1) {
+                    result.innerText = 'Appel 141'
+                }
+   }
+   //Tout patient avec fièvre et toux
+   else if(answers['Q1'] === 'oui'|| answers['Q3'] === 'oui'){
+              //Tout patient sans facteur pronostique
+    /*           if (factorPronosticPositif === 0 && ((facteurGMineur === 0 && facteurGMajor === 0) || (facteurGMineur >= 1 && facteurGMajor === 0))) {
+                result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.' */
+                //Tout patient avec un facteur pronostique ou plus
+             /*  } else if (factorPronosticPositif >= 1 && facteurGMineur === 0 && facteurGMajor === 0) {
+                result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.' 
+              } */
+              else if (factorPronosticPositif === 1 && facteurGMineur >= 1 && facteurGMajor === 0) {
+                result.innerText = 'téléconsultation ou médecin généraliste ou visite à domicile.'
+              }else if (factorPronosticPositif >= 2 && facteurGMineur >= 1 && facteurGMajor === 0) {
+                result.innerText = 'Appel 141'
+              }
+              //Tout patient avec ou sans facteur pronostique avec au moins un facteur de gravité majeur
+             /*  else if (factorPronosticPositif >=0 && facteurGMajor > 1) {
+                result.innerText = 'Appel 141'
+            } */
+//Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, courbatures   
+}else if (answers['Q1'] === 'oui'|| answers['Q3'] === 'oui' || answers['Q5'] === 'oui' || answers['Q4'] === 'oui') {
+       //Pas de facteur de gravité
+       if (factorPronosticPositif >= 1 && facteurGravite >= 1){
+        result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
+        resultMessage[0].innerText = 'Un avis médical est recommandé. Au moindre doute, appelez le 141'
+       }else {
+        result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
+        resultMessage[0].innerText = 'Consultez votre médecin au moindre doute.'
+       } 
+       // Au moins un facteur de gravité ou un facteur pronostique :
+       
+} else {
+    result.innerText = 'Votre situation ne relève probablement pas du Covid-19.'
+    resultMessage[0].innerText = 'N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19 allez vers la page d’accueil.'
+}
 }
 
 
