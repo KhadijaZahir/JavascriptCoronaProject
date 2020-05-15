@@ -5,114 +5,6 @@ body {
   font-family: 'Cairo', sans-serif;
   font-size: 14px; }
 
-header {
-  width: 100%;
-  background-image: url("../img/bar_transparent.png");
-  background-size: cover;
-  display: flex;
-  justify-content: space-between; }
-
-.logo-sante {
-  margin-top: 8px; }
-
-.navbar {
-  display: flex;
-  flex-flow: nowrap row;
-  align-items: center;
-  justify-content: space-around;
-  list-style-type: none; }
-  .navbar__item {
-    margin: 0 20px;
-    font-weight: 700;
-    font-size: 1.4rem; }
-    .navbar__item a {
-      text-decoration: none;
-      color: #000; }
-      .navbar__item a:hover {
-        color: #1078AD; }
-
-.multilangBtn {
-  width: 140px;
-  height: 50px;
-  margin-right: 9%;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background-color: transparent;
-  border-radius: 16px;
-  border: 2px solid #6598df;
-  display: flex;
-  align-self: center; }
-  .multilangBtn .icon-multilang {
-    width: 40px;
-    height: 40px;
-    margin: 0 9px; }
-
-nav {
-  display: flex; }
-
-/* header {
-  // background-image: url('/Assets/png/Merged-bar-mat.png');
-  background-image: url('/img/Merged-bar-transparent.png'); 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: $colorHeaderBar;
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.logo-sante {
-  margin-top: 8px;
-  margin-left: 30px;
-  // width: auto;
-  // height: auto;
-}
-
-.navbar {
-  display: flex;
-  flex-flow: nowrap row;
-  align-items: center;
-  justify-content: space-around;
-  list-style-type: none;
-
-  &__item {
-      margin: 0 20px;
-      font-weight: 700;
-      font-size: 1.4rem;
-
-      & a {
-          text-decoration: none;
-          color: $Black;
-          &:hover {
-            color: $blueBg;
-          }
-      }
-  }
-
-}
-
-.multilangBtn {
-  width: 140px;
-  height: 50px;
-  margin: 0 30px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background-color: transparent;
-  border-radius: 16px;
-  border: 2px solid $BlueTitle;
-  display: flex;
-  align-self: center;
-
-  & .icon-multilang {
-      width: 40px;
-      height: 40px;
-      margin: 0 12px;
-  }
-}
-
-nav {
-  display: flex;
-} */
 /*________________________________start section header______________________________________________*/
 header {
   width: 100%;
@@ -1151,6 +1043,7 @@ footer {
     color: #787878;
     font-size: 17px; }
   .answerShow input[type="radio"] {
+    display: none;
     position: absolute;
     left: -9px; }
   .answerShow .side-label {

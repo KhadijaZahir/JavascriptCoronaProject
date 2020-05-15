@@ -184,13 +184,14 @@
         ///label-span-radio
 
         label {
-                color: #787878;
+            color: #787878;
             font-size: 17px;
         }
         
  ////custom input radio
 
 input[type="radio"] {
+  display: none;
   position: absolute;
   left: -9px;
 }
